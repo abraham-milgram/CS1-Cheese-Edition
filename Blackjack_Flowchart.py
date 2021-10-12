@@ -6,10 +6,7 @@ Created on Oct 12, 2021
 import random
 
 def main():
-    
-    card = []
     suits = ['♠', '♣', '♥', '♦']
-
 
     player = []
     dealer = []

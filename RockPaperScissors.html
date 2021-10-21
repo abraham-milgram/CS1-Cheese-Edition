@@ -10,9 +10,7 @@ function inArray(arr, item){
   });
   return contains;
 }
-function random(max) {
-    return Math.floor(Math.random() * max);
-}
+
 function pMoveF(m) {
 
     if (m == 'Rock'){
@@ -31,7 +29,7 @@ function pMoveF(m) {
         }, i)
     }
     var moves = ['Rock', 'Paper', 'Scissors'];
-    var botr = random(3);
+    var botr = return Math.floor(Math.random() * 3);;
     var bot = moves[botr];
 
     var user = document.getElementById("pMove").innerHTML;

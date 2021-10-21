@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function random(max) {
+    return Math.floor(Math.random() * max);
+}
+function pMoveF(m) {
+
+    if (m == 'Rock'){
+        document.getElementById("pMove").innerHTML = "Rock";
+    } else if (m == 'Paper'){
+        document.getElementById("pMove").innerHTML = "Paper";
+    } else {
+        document.getElementById("pMove").innerHTML = "Scissors";
+    }
+    
+
+    var rpsImages = ['https://i.ytimg.com/vi/D32EHS748D4/hqdefault.jpg', 'https://i.imgur.com/JzEiVgu.jpeg', 'https://i.kym-cdn.com/photos/images/original/000/602/032/20f.jpg'];
+    for(let i = 2000; i != 0; i = i - 10){
+        setTimeout(function (){
+            document.getElementById("bot").src = rpsImages[random(3)];
+        }, i)
+    }
+    var moves = ['Rock', 'Paper', 'Scissors'];
+    var botr = random(3);
+    console.log(botr);
+    var bot = moves[botr];
+    document.getElementById("bot").src = rpsImages[moves.indexOf(bot)];
+    console.log(rpsImages[moves.indexOf(bot)]);
+
+    var user = document.getElementById("pMove").innerHTML;
+    var botConditions = [['rock', 'scissors'], ['scissors', 'paper'], ['paper', 'rock']];
+    console.log(user)
+    console.log(bot)
+    if (bot == user){
+        setTimeout(function (){
+            document.getElementById("win").innerHTML = "Tie!";
+        }, 2000)
+        
+    }
+
+    document.getElementById("win").innerHTML = "?";
+
+    
+
+}
+</script>
+</head>
+<body>
+
+<h2>Rock, Paper, Scissors</h2>
+Your Move:
+<p id="pMove">Press button below to select move</p>
+<button type="move" onclick="pMoveF('Rock')">rock</button>
+<button type="move" onclick="pMoveF('Paper')">paper</button>
+<button type="move" onclick="pMoveF('Scissors')">scissors</button>
+<br> Bot Move: <br>
+<img id="bot" src="https://www.meme-arsenal.com/memes/48d1ee9c9bc98504b4dcbc40bb940786.jpg" alt="BotMove" width="100" height="100">
+
+<h3>Winner is:</h3>
+<h3 id="win">?</h3>
+</body>
+</html>

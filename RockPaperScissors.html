@@ -2,6 +2,14 @@
 <html>
 <head>
 <script>
+function inArray(arr, item){
+  var item_as_string = JSON.stringify(item);
+
+  var contains = arr.some(function(ele){
+    return JSON.stringify(ele) === item_as_string;
+  });
+  return contains;
+}
 function random(max) {
     return Math.floor(Math.random() * max);
 }
@@ -24,26 +32,23 @@ function pMoveF(m) {
     }
     var moves = ['Rock', 'Paper', 'Scissors'];
     var botr = random(3);
-    console.log(botr);
     var bot = moves[botr];
-    document.getElementById("bot").src = rpsImages[moves.indexOf(bot)];
-    console.log(rpsImages[moves.indexOf(bot)]);
 
     var user = document.getElementById("pMove").innerHTML;
-    var botConditions = [['rock', 'scissors'], ['scissors', 'paper'], ['paper', 'rock']];
-    console.log(user)
-    console.log(bot)
-    if (bot == user){
-        setTimeout(function (){
+    var botConditions = [['Rock', 'Scissors'], ['Scissors', 'Paper'], ['Paper', 'Rock']];
+    console.log([bot, user])
+    console.log(botConditions.indexOf([bot, user]) !== -1)
+
+    setTimeout(function (){
+        document.getElementById("bot").src = rpsImages[moves.indexOf(bot)];
+        if (bot == user){
             document.getElementById("win").innerHTML = "Tie!";
-        }, 2000)
-        
-    }
-
-    document.getElementById("win").innerHTML = "?";
-
-    
-
+        } else if (inArray(botConditions, [bot, user]) == true){
+            document.getElementById("win").innerHTML = "Bot wins!";
+        } else {
+            document.getElementById("win").innerHTML = "Player wins!";
+        }
+    }, 2000)
 }
 </script>
 </head>
@@ -58,7 +63,6 @@ Your Move:
 <br> Bot Move: <br>
 <img id="bot" src="https://www.meme-arsenal.com/memes/48d1ee9c9bc98504b4dcbc40bb940786.jpg" alt="BotMove" width="100" height="100">
 
-<h3>Winner is:</h3>
-<h3 id="win">?</h3>
+<h3 id="win"></h3>
 </body>
 </html>

@@ -13,6 +13,8 @@ function inArray(arr, item){
 function random(max) {
     return Math.floor(Math.random() * max);
 }
+var botScore = 0;
+var playerScore = 0;
 function pMoveF(m) {
 
     if (m == 'Rock'){
@@ -45,8 +47,12 @@ function pMoveF(m) {
             document.getElementById("win").innerHTML = "Tie!";
         } else if (inArray(botConditions, [bot, user]) == true){
             document.getElementById("win").innerHTML = "Bot wins!";
+            botScore ++;
+            document.getElementById("bScore").innerHTML = `Bot: ${botScore}`;
         } else {
             document.getElementById("win").innerHTML = "Player wins!";
+            playerScore ++;
+            document.getElementById("pScore").innerHTML = `Player: ${playerScore}`;
         }
     }, 2000)
 }
@@ -64,5 +70,7 @@ Your Move:
 <img id="bot" src="https://www.meme-arsenal.com/memes/48d1ee9c9bc98504b4dcbc40bb940786.jpg" alt="BotMove" width="100" height="100">
 
 <h3 id="win"></h3>
+<h4 id="pScore">Player: 0</h4>
+<h4 id="bScore">Bot: 0</h4>
 </body>
 </html>

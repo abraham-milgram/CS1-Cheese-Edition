@@ -2,6 +2,7 @@
 <html>
 <head>
 <script>
+<!-- Check if in array --!>
 function inArray(arr, item){
   var item_as_string = JSON.stringify(item);
 
@@ -10,13 +11,14 @@ function inArray(arr, item){
   });
   return contains;
 }
+<!-- returns random number with give range !-->
 function random(max) {
     return Math.floor(Math.random() * max);
 }
 var botScore = 0;
 var playerScore = 0;
 function pMoveF(m) {
-
+    <!-- takes ipnut and changes text to reflect input --!>
     if (m == 'Rock'){
         document.getElementById("pMove").innerHTML = "Rock";
     } else if (m == 'Paper'){
@@ -25,22 +27,22 @@ function pMoveF(m) {
         document.getElementById("pMove").innerHTML = "Scissors";
     }
     
-
-    var rpsImages = ['https://i.ytimg.com/vi/D32EHS748D4/hqdefault.jpg', 'https://i.imgur.com/JzEiVgu.jpeg', 'https://i.kym-cdn.com/photos/images/original/000/602/032/20f.jpg'];
+    <!-- rotates images --!>
+    const rpsImages = ['https://i.ytimg.com/vi/D32EHS748D4/hqdefault.jpg', 'https://i.imgur.com/JzEiVgu.jpeg', 'https://i.kym-cdn.com/photos/images/original/000/602/032/20f.jpg'];
     for(let i = 2000; i != 0; i = i - 10){
         setTimeout(function (){
             document.getElementById("bot").src = rpsImages[random(3)];
         }, i)
     }
-    var moves = ['Rock', 'Paper', 'Scissors'];
-    var botr = random(3);
-    var bot = moves[botr];
+    
+    <!-- bot and user moves defined --!>
+    const botr = random(3);
+    var bot = ['Rock', 'Paper', 'Scissors'][botr];
 
     var user = document.getElementById("pMove").innerHTML;
-    var botConditions = [['Rock', 'Scissors'], ['Scissors', 'Paper'], ['Paper', 'Rock']];
-    console.log([bot, user])
-    console.log(botConditions.indexOf([bot, user]) !== -1)
-
+    const botConditions = [['Rock', 'Scissors'], ['Scissors', 'Paper'], ['Paper', 'Rock']];
+    
+    <!-- win/loss detection --!>
     setTimeout(function (){
         document.getElementById("bot").src = rpsImages[moves.indexOf(bot)];
         if (bot == user){

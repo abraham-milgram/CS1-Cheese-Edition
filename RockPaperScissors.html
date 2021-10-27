@@ -2,7 +2,7 @@
 <html>
 <head>
 <script>
-<!-- Check if in array --!>
+// Check if in array 
 function inArray(arr, item){
   var item_as_string = JSON.stringify(item);
 
@@ -11,7 +11,7 @@ function inArray(arr, item){
   });
   return contains;
 }
-<!-- returns random number with give range !-->
+// returns random number with give range 
 function random(max) {
     return Math.floor(Math.random() * max);
 }
@@ -27,7 +27,7 @@ function pMoveF(m) {
         document.getElementById("pMove").innerHTML = "Scissors";
     }
     
-    <!-- rotates images --!>
+    // rotates images 
     const rpsImages = ['https://i.ytimg.com/vi/D32EHS748D4/hqdefault.jpg', 'https://i.imgur.com/JzEiVgu.jpeg', 'https://i.kym-cdn.com/photos/images/original/000/602/032/20f.jpg'];
     for(let i = 2000; i != 0; i = i - 10){
         setTimeout(function (){
@@ -35,14 +35,14 @@ function pMoveF(m) {
         }, i)
     }
     
-    <!-- bot and user moves defined --!>
+    // bot and user moves defined 
     const botr = random(3);
     var bot = ['Rock', 'Paper', 'Scissors'][botr];
 
     var user = document.getElementById("pMove").innerHTML;
     const botConditions = [['Rock', 'Scissors'], ['Scissors', 'Paper'], ['Paper', 'Rock']];
     
-    <!-- win/loss detection --!>
+    // win/loss detection 
     setTimeout(function (){
         document.getElementById("bot").src = rpsImages[moves.indexOf(bot)];
         if (bot == user){

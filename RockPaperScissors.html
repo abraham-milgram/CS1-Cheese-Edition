@@ -1,3 +1,7 @@
+<!--
+Author: abraham-milgram
+Date: 10.28.2021
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +22,7 @@ function random(max) {
 var botScore = 0;
 var playerScore = 0;
 function pMoveF(m) {
-    <!-- takes ipnut and changes text to reflect input --!>
+    // takes ipnut and changes text to reflect input
     if (m == 'Rock'){
         document.getElementById("pMove").innerHTML = "Rock";
     } else if (m == 'Paper'){
@@ -42,9 +46,10 @@ function pMoveF(m) {
     var user = document.getElementById("pMove").innerHTML;
     const botConditions = [['Rock', 'Scissors'], ['Scissors', 'Paper'], ['Paper', 'Rock']];
     
+    console.log('hello')
     // win/loss detection 
     setTimeout(function (){
-        document.getElementById("bot").src = rpsImages[moves.indexOf(bot)];
+        document.getElementById("bot").src = rpsImages[botr];
         if (bot == user){
             document.getElementById("win").innerHTML = "Tie!";
         } else if (inArray(botConditions, [bot, user]) == true){
